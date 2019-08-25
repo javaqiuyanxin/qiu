@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import java.util.Objects;
+
 public class User {
     private Integer id;
     private String usename;
@@ -46,5 +48,21 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(usename, user.usename) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, usename, password, name);
     }
 }
